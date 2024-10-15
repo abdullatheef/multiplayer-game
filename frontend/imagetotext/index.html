@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <script src="/assets/js/custom/index.js" defer></script>
+<!--
+
+TemplateMo 579 Cyborg Gaming
+
+https://templatemo.com/tm-579-cyborg-gaming
+
+-->
+  </head>
+
+
+
+
+
+<style>
+
+.custom-layout {
+  display: flex; /* Makes the row a flex container */
+  align-items: flex-start; /* Aligns items to the top */
+}
+#remoteVideo {
+    width: 200px;
+    height: 200px;
+}
+#localVideo {
+    width: 200px;
+    height: 200px;
+}
+#startCall > a {
+    
+    width: 100%;
+    text-align: center;
+
+}
+#matchReady > a {
+    
+    width: 100%;
+    text-align: center;
+
+}
+.user-button > a {
+    
+    width: 100%;
+    text-align: center;
+
+}
+
+
+</style>
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="#" class="logo" onclick="window.location.href='/'">
+                        <img src="assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <!-- <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div> -->
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="#" class="active" onclick="window.location.href='/'">Home</a></li>
+                        <!-- <li><a href="browse.html">Browse</a></li>
+                        <li><a href="details.html">Details</a></li>
+                        <li><a href="streams.html">Streams</a></li> -->
+                        <li class="login-failed">
+                          <a href="#" id="auth-button">Login</a>
+                        </li>
+                        <li class="login-success"><a href="#" onclick="window.location.href='/profile'">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>                  
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+          <div class="row">
+            <!-- <div class="col-lg-12">
+                <div class="main-border-button" id="startCall">
+                  <a href="#" id="video-call">Start Video Call (optional)!</a>
+                </div>
+            </div> -->
+            <div class="col-lg-12">
+              <div class="main-border-button" id="matchReady">
+                <a href="#">Ready</a>
+              </div>
+           </div>
+           <div class="col-lg-6">
+            <div class="main-border-button user-button" id="player-1-card">
+              <a href="#"></a>
+            </div>
+         </div>
+         <div class="col-lg-6">
+          <div class="main-border-button user-button" id="player-2-card">
+            <a href="#"></a>
+          </div>
+       </div>
+          </div>  
+          <!-- ***** Featured Start ***** -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="feature-banner header-text">
+                <div class="row custom-layout">
+                  <div class="col-lg-6">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                  </div>
+                  <div class="col-lg-6 d-flex justify-content-end">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- ***** Featured End ***** -->
+
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2 id="game-name"></h2>
+              </div>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="left-info">
+                        <div class="left">
+                          <h4>Fortnite</h4>
+                          <span>Sandbox</span>
+                        </div>
+                        <ul>
+                          <li><i class="fa fa-star"></i> 4.8</li>
+                          <li><i class="fa fa-download"></i> 2.3M</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="right-info">
+                        <ul>
+                          <li><i class="fa fa-star"></i> 4.8</li>
+                          <li><i class="fa fa-download"></i> 2.3M</li>
+                          <li><i class="fa fa-server"></i> 36GB</li>
+                          <li><i class="fa fa-gamepad"></i> Action</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <img src="/assets/images/details-01.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                    </div>
+                    <div class="col-lg-4">
+                      <img src="/assets/images/details-02.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                    </div>
+                    <div class="col-lg-4">
+                      <img src="/assets/images/details-03.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                    </div>
+                    <div class="col-lg-12">
+                      <p id="game-description">Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout. You can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com and thank you for supporting. If you want to get the PSD source files, please contact us. Lorem ipsum dolor sit consectetur es dispic dipiscingei elit, sed doers eiusmod lisum hored tempor.</p>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="main-border-button" id="connect">
+                        <a href="#">Click to connect to Game!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Details End ***** -->
+
+      
+
+          <!-- ***** Other Start ***** -->
+
+          <!-- ***** Other End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">headvstail.com</a> Company. All rights reserved. 
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="/assets/js/isotope.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/tabs.js"></script>
+  <script src="/assets/js/popup.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/custom/profile.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+
+  </body>
+  <!-- <input type="text" id="messageInput" placeholder="Type your message">
+  <button id="sendMessage">Send Message</button> -->
+  
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+  <script>
+        //  const sendMessageButton = document.getElementById('sendMessage');
+        //  const messageInput = document.getElementById('messageInput'); 
+         let dataChannel;
+
+    const localVideo = document.getElementById('localVideo');
+    const remoteVideo = document.getElementById('remoteVideo');
+    // const startCallButton = document.getElementById('startCall');
+    const matchReadyButton = document.getElementById('matchReady');
+
+    let localStream;
+    let remoteStream;
+    let peerConnection;
+    let webrtc = 0
+    //const socket = io('http://localhost:3003'); // Adjust this to your server's URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const socket = io('http://localhost:3003', {
+        query: {
+            matchId: id,
+        },
+        withCredentials: true // if needed
+    });
+    const config = {
+      iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+    };
+
+    // Get media (camera/microphone) access
+    async function startMedia() {
+      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true, data: true });
+      localVideo.srcObject = localStream;
+    }
+
+    // Create a new WebRTC connection
+    function createPeerConnection() {
+      console.log(">>>>>")
+      peerConnection = new RTCPeerConnection(config);
+
+      // When a new ICE candidate is found
+      peerConnection.onicecandidate = ({ candidate }) => {
+        if (candidate) {
+          socket.emit('ice-candidate', candidate);
+        }
+      };
+
+      // When the remote stream is received
+      // peerConnection.ontrack = (event) => {
+      //   remoteVideo.srcObject = event.streams[0];
+      // };
+
+      // Add local tracks (video/audio) to the connection
+      // localStream.getTracks().forEach((track) => {
+      //   peerConnection.addTrack(track, localStream);
+      // });
+
+      if (!dataChannel) {
+        dataChannel = peerConnection.createDataChannel('chat');
+        dataChannel.onopen = () => console.log('Data channel is open');
+        dataChannel.onmessage = (event) => {
+          console.log('Received message2:', event.data);
+          $('#new-message').show()
+          $('.chatbox__body').append(`
+            <div class="chatbox__body__message chatbox__body__message--left">
+              <img src="/assets/images/down.svg" alt="Picture">
+              <p>${event.data}</p>
+          </div>
+          `)
+
+        }
+      }
+
+      // Handle incoming data channels
+      peerConnection.ondatachannel = (event) => {
+        dataChannel = event.channel;
+        dataChannel.onopen = () => console.log('Data channel is open (remote)');
+        dataChannel.onmessage = (event) => {
+          console.log('Received message1:', event.data);
+          $('#new-message').css('display', 'inline')
+          $('.chatbox__body').append(`
+            <div class="chatbox__body__message chatbox__body__message--left">
+              <img src="/assets/images/down.svg" alt="Picture">
+              <p>${event.data}</p>
+          </div>
+          `)
+
+        }
+      };
+
+
+    }
+    socket.on('matchReady', async (message) => {
+      console.log(message)
+      $(`[data-user-id="${message.user_id}"]`).css('background-color', '#0cee4bb5');
+      $(`[data-user-id="${message.user_id}"]`).css('color', '#000000');
+      
+    });
+    socket.on('startMatch', async (message) => {
+      console.log(message)
+    });
+
+    // Handle incoming socket messages
+    socket.on('offer', async (offer) => {
+      console.log('offer')  
+      createPeerConnection();
+      await peerConnection.setRemoteDescription(offer);
+
+      const answer = await peerConnection.createAnswer();
+      await peerConnection.setLocalDescription(answer);
+      socket.emit('answer', answer);
+    });
+
+    socket.on('answer', async (answer) => {
+      console.log('answer')    
+      await peerConnection.setRemoteDescription(answer);
+    });
+
+    socket.on('ice-candidate', async (candidate) => {
+      console.log('ice=candidate')   
+      try {
+        await peerConnection.addIceCandidate(candidate);
+      } catch (e) {
+        console.error('Error adding received ICE candidate', e);
+      }
+    });
+    matchReadyButton.addEventListener('click', async () => {
+      socket.emit('matchReady', {});
+    });
+
+
+    async function startAll() {
+      createPeerConnection();
+      const offer = await peerConnection.createOffer();
+      await peerConnection.setLocalDescription(offer);
+      socket.emit('offer', offer);      
+    }
+
+    startAll()
+    // Start the call and create an offer
+    // startCallButton.addEventListener('click', async () => {
+    //   if (webrtc == 1) {
+    //     stopLocalMedia()
+    //     webrtc = 2
+    //     $('#video-call').html('Start video again.')
+    //     return
+    //   }
+    //   if (webrtc == 2) {
+    //     startMedia();
+    //     $('#video-call').html('Please wait..')
+    //     setTimeout(async function(){
+    //       createPeerConnection();
+    //       const offer = await peerConnection.createOffer();
+    //       await peerConnection.setLocalDescription(offer);
+    //       socket.emit('offer', offer);
+    //       webrtc = 1
+    //       remoteVideo.style.display = "block";
+    //       $('#video-call').html('Turn off video call')
+    //     }, 3000)
+    //     return
+    //   }
+    //   if (webrtc == 0){
+    //     $('#video-call').html('Please wait..')
+    //     localVideo.srcObject = localStream;
+    //     setTimeout(async function(){
+    //       createPeerConnection();
+    //       const offer = await peerConnection.createOffer();
+    //       await peerConnection.setLocalDescription(offer);
+    //       socket.emit('offer', offer);
+    //       webrtc = 1
+    //       $('#video-call').html('Turn off video call')
+    //     }, 5000)
+    //   }
+
+    // });
+
+    // Start the media stream on page load
+
+    
+    function stopLocalMedia() {
+        if (localStream) {
+            localStream.getTracks().forEach(track => {
+                console.log(track)
+                track.stop(); // Stop each track of the local stream
+            });
+            localVideo.srcObject = null; // Remove the video stream from the local video element
+            remoteVideo.style.display = "none";
+        }
+    }
+
+$(document).ready(function() {
+    // Extract the 'id' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    if (id) {
+        // Make an AJAX request to the API endpoint with the extracted ID
+        $.ajax({
+            url: `${GAME_DOMAIN}/main/match/${id}/`, // Endpoint to send the request to
+            type: 'GET',
+            success: function(response) {
+                // Handle the response from the API
+                console.log('Match data:', response);
+                $('#player-1-card')
+                  .find('a')
+                  .attr('data-user-id', response.players[0][0]) // Set the data-user-id attribute to the player ID
+                  .html(`Player 1 - <b>${response.players[0][1]}</b>`); // Update the player's name
+                $('#player-2-card')
+                  .find('a')
+                  .attr('data-user-id', response.players[1][0]) // Set the data-user-id attribute to the player ID
+                  .html(`Player 2 - <b>${response.players[1][1]}</b>`); // Update the player's name
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error('Error fetching match data:', error);
+            }
+        });
+    } else {
+        console.log('ID not found in the URL');
+    }
+});
+
+
+
+</script>
+
+
+
+
+<style>
+.chatbox {
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+
+    -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.chatbox--tray {
+    bottom: -350px;
+}
+
+.chatbox--closed {
+    bottom: -400px;
+}
+
+.chatbox .form-control:focus {
+    border-color: #1f2836;
+}
+
+.chatbox__title,
+.chatbox__body {
+    border-bottom: none;
+}
+
+.chatbox__title {
+    min-height: 50px;
+    padding-right: 10px;
+    background-color: #1f2836;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.chatbox__title h5 {
+    height: 50px;
+    margin: 0 0 0 15px;
+    line-height: 50px;
+    position: relative;
+    padding-left: 20px;
+
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.chatbox__title h5 a {
+    color: #fff;
+    max-width: 195px;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatbox__title h5:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border-radius: 6px;
+
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.chatbox__title__tray,
+.chatbox__title__close {
+    width: 24px;
+    height: 24px;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    opacity: 0.5;
+    cursor: pointer;
+
+    -webkit-transition: opacity 200ms;
+    transition: opacity 200ms;
+}
+
+.chatbox__title__tray:hover,
+.chatbox__title__close:hover {
+    opacity: 1;
+}
+
+.chatbox__title__tray span {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-bottom: 2px solid #fff
+}
+
+.chatbox__title__close svg {
+    vertical-align: middle;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.2px;
+}
+
+.chatbox__body,
+.chatbox__credentials {
+    padding: 15px;
+    border-top: 0;
+    background-color: #f5f5f5;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.chatbox__credentials {
+    display: none;
+}
+
+.chatbox__credentials .form-control {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.chatbox__body {
+    overflow-y: auto;
+}
+
+.chatbox__body__message {
+    position: relative;
+    margin: 4px;
+}
+
+.chatbox__body__message p {
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+}
+
+.chatbox__body__message img {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #fcfcfc;
+    position: absolute;
+    top: 15px;
+}
+
+.chatbox__body__message--left p {
+    margin-left: 15px;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.chatbox__body__message--left img {
+    left: -5px;
+}
+
+.chatbox__body__message--right p {
+    margin-right: 15px;
+    padding-right: 30px;
+    text-align: right;
+    background-color: #e3e3d8;
+}
+
+.chatbox__body__message--right img {
+    right: -5px;
+}
+
+.chatbox__message {
+    padding: 15px;
+    min-height: 50px;
+    outline: 0;
+    resize: none;
+    border: none;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #fefefe;
+}
+
+.chatbox--empty {
+    height: 262px;
+}
+
+.chatbox--empty.chatbox--tray {
+    bottom: -212px;
+}
+
+.chatbox--empty.chatbox--closed {
+    bottom: -262px;
+}
+
+.chatbox--empty .chatbox__body,
+.chatbox--empty .chatbox__message {
+    display: none;
+}
+
+.chatbox--empty .chatbox__credentials {
+    display: block;
+}
+</style>
+<div class="chatbox chatbox--tray chatbox--empty">
+  <div class="chatbox__title">
+      <h5><a href="#">Private Chat</a><span style="
+        position: fixed;
+        color: cyan;
+        margin-left: 12px;
+        font-size: 11px;
+    " id="new-message">new</span></h5>
+      <button class="chatbox__title__tray">
+          <span></span>
+      </button>
+      <!-- <button class="chatbox__title__close">
+          <span>
+              <svg viewBox="0 0 12 12" width="12px" height="12px">
+                  <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                  <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+              </svg>
+          </span>
+      </button> -->
+  </div>
+  <div class="chatbox__body">
+  </div>
+  <form class="chatbox__credentials">
+      <div class="form-group">
+          <label for="inputName">Name:</label>
+          <input type="text" class="form-control" id="inputName" required>
+      </div>
+      <div class="form-group">
+          <label for="inputEmail">Email:</label>
+          <input type="email" class="form-control" id="inputEmail" required>
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Enter Chat</button>
+  </form>
+  <textarea class="chatbox__message" placeholder="Send Message" id="messageInput"></textarea>
+</div>
+<script>
+(function($) {
+    $(document).ready(function() {
+        $('#new-message').hide()
+        var $chatbox = $('.chatbox'),
+            $chatboxTitle = $('.chatbox__title'),
+            $chatboxTitleClose = $('.chatbox__title__close'),
+            $chatboxCredentials = $('.chatbox__credentials');
+        $chatboxTitle.on('click', function() {
+            $chatbox.toggleClass('chatbox--tray');
+            $('#new-message').hide()
+        });
+        $chatboxTitleClose.on('click', function(e) {
+            e.stopPropagation();
+            $chatbox.addClass('chatbox--closed');
+        });
+        $chatbox.on('transitionend', function() {
+            if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
+        });
+        $chatboxCredentials.on('submit', function(e) {
+            e.preventDefault();
+            $chatbox.removeClass('chatbox--empty');
+        });
+        $chatbox.removeClass('chatbox--empty');
+        $('#messageInput').on('keydown', function(event) {
+          if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault(); // Prevent the default action of adding a new line
+            const message = $(this).val()
+            if (dataChannel && dataChannel.readyState === 'open') {
+              dataChannel.send(message);
+              console.log('Sent message:', message);
+              messageInput.value = ''; // Clear input field
+              $('.chatbox__body').append(`
+                <div class="chatbox__body__message chatbox__body__message--right">
+                  <img src="/assets/images/up.svg" alt="Picture">
+                  <p>${message}</p>
+              </div>
+              `)
+            } else {
+              console.error('Data channel is not open');
+            }
+            $(this).val(''); // Optionally clear the textarea after sending
+          }
+        });
+    });
+})(jQuery);
+</script>
+</html>

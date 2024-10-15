@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC Video Call</title>
+  <style>
+    /* Container for both videos */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #333;
+    }
+
+    video {
+      background-color: black;
+    }
+
+    /* Remote video (full-size) */
+    #remoteVideo {
+      width: 50%;
+      height: 50%;
+    }
+
+    /* Local video (smaller and placed in bottom-left corner, overlapped) */
+    #localVideo {
+      position: absolute;
+      width: 200px; /* Adjust this size as per requirement */
+      height: 150px; /* Adjust this size as per requirement */
+      bottom: 50%; /* Distance from bottom of screen */
+      left: 10px;   /* Distance from left side of screen */
+      z-index: 10;  /* Ensure it stays on top */
+      border: 2px solid white; /* Optional: Add border to distinguish local video */
+    }
+
+    button {
+      position: absolute;
+      top: 10px;
+      z-index: 20; /* Ensure button stays above videos */
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>WebRTC Video Call</h1>
+  <video id="localVideo" autoplay muted playsinline></video>
+  <video id="remoteVideo" autoplay playsinline></video>
+  <button id="startCall">Start Call</button>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+  <script>
+    const localVideo = document.getElementById('localVideo');
+    const remoteVideo = document.getElementById('remoteVideo');
+    const startCallButton = document.getElementById('startCall');
+
+    let localStream;
+    let remoteStream;
+    let peerConnection;
+    const socket = io('http://localhost:3003'); // Adjust this to your server's URL
+    const config = {
+      iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+    };
+
+    // Get media (camera/microphone) access
+    async function startMedia() {
+      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      localVideo.srcObject = localStream;
+    }
+
+    // Create a new WebRTC connection
+    function createPeerConnection() {
+      peerConnection = new RTCPeerConnection(config);
+
+      // When a new ICE candidate is found
+      peerConnection.onicecandidate = ({ candidate }) => {
+        if (candidate) {
+          socket.emit('ice-candidate', candidate);
+        }
+      };
+
+      // When the remote stream is received
+      peerConnection.ontrack = (event) => {
+        remoteVideo.srcObject = event.streams[0];
+      };
+
+      // Add local tracks (video/audio) to the connection
+      localStream.getTracks().forEach((track) => {
+        peerConnection.addTrack(track, localStream);
+      });
+    }
+
+    // Handle incoming socket messages
+    socket.on('offer', async (offer) => {
+      console.log('offer')  
+      createPeerConnection();
+      await peerConnection.setRemoteDescription(offer);
+
+      const answer = await peerConnection.createAnswer();
+      await peerConnection.setLocalDescription(answer);
+      socket.emit('answer', answer);
+    });
+
+    socket.on('answer', async (answer) => {
+      console.log('answer')    
+      await peerConnection.setRemoteDescription(answer);
+    });
+
+    socket.on('ice-candidate', async (candidate) => {
+      console.log('ice=candidate')   
+      try {
+        await peerConnection.addIceCandidate(candidate);
+      } catch (e) {
+        console.error('Error adding received ICE candidate', e);
+      }
+    });
+
+    // Start the call and create an offer
+    startCallButton.addEventListener('click', async () => {
+      createPeerConnection();
+      const offer = await peerConnection.createOffer();
+      await peerConnection.setLocalDescription(offer);
+      socket.emit('offer', offer);
+    });
+
+    // Start the media stream on page load
+    startMedia();
+  </script>
+</body>
+
+
+<script>
+  $(document).ready(function() {
+    // Get the query string from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const matchId = urlParams.get('id');  // Extract the 'id' parameter
+
+    if (matchId) {
+      // Construct the API endpoint
+      const apiUrl = `/main/match/id/${matchId}/`;
+
+      // Make an AJAX call to the API
+      $.ajax({
+        url: apiUrl,
+        type: 'GET',
+        success: function(data) {
+          console.log('Match data:', data);
+          // Do something with the data, like update the DOM
+        },
+        error: function(error) {
+          console.error('Error fetching match:', error);
+        }
+      });
+    } else {
+      console.error('No match ID found in the URL.');
+    }
+  });
+</script>
+</html>

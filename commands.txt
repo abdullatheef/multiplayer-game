@@ -1,0 +1,49 @@
+(venv_global) itzmeontv@pashas-MacBook-Pro frontend % pwd
+/Users/itzmeontv/projects/enterpreuner/headvstail/frontend
+(venv_global) itzmeontv@pashas-MacBook-Pro frontend % python3 -m http.server
+
+
+(venv_global) itzmeontv@pashas-MacBook-Pro auth % pwd
+/Users/itzmeontv/projects/enterpreuner/headvstail/backend/auth
+(venv_global) itzmeontv@pashas-MacBook-Pro auth % python main.py
+
+
+(venv_global) itzmeontv@pashas-MacBook-Pro api_backend % pwd                                 
+/Users/itzmeontv/projects/enterpreuner/headvstail/backend/api_backend
+(venv_global) itzmeontv@pashas-MacBook-Pro api_backend % python manage.py runserver 8005
+
+
+(venv_global) itzmeontv@pashas-MacBook-Pro connection_server % pwd
+/Users/itzmeontv/projects/enterpreuner/headvstail/backend/connection_server
+(venv_global) itzmeontv@pashas-MacBook-Pro connection_server % node server.js
+
+(venv_global) itzmeontv@pashas-MacBook-Pro connection_server % pwd                   
+/Users/itzmeontv/projects/enterpreuner/headvstail/backend/connection_server
+(venv_global) itzmeontv@pashas-MacBook-Pro connection_server % node kafka_consumer.js
+
+
+(venv_global) itzmeontv@pashas-MacBook-Pro signalling_server % pwd
+/Users/itzmeontv/projects/enterpreuner/headvstail/backend/signalling_server
+(venv_global) itzmeontv@pashas-MacBook-Pro signalling_server % node signalling.js
+
+
+itzmeontv@pashas-MacBook-Pro ~ % docker run \
+  --name postgres-container \
+  -e POSTGRES_USER=abc \
+  -e POSTGRES_PASSWORD=123 \
+  -e POSTGRES_DB=mydb \
+  -p 5432:5432 \
+  postgres:latest
+
+docker run --name my-redis -p 6379:6379 redis
+
+itzmeontv@pashas-MacBook-Pro ~ % docker run -p 2181:2181 zookeeper
+
+
+itzmeontv@pashas-MacBook-Pro ~ % docker run -p 9092:9092 \
+-e KAFKA_ZOOKEEPER_CONNECT=192.168.1.13:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.1.13:9092 \
+-e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
+confluentinc/cp-kafka
+
+create db auth, headvstail

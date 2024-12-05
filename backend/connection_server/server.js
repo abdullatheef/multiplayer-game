@@ -1,6 +1,8 @@
 // server.js
 const express = require('express');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');  // Required for reading SSL certificates
 const socketIo = require('socket.io');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -93,8 +95,19 @@ process.on('SIGINT', () => {
 
 
 const app = express();
-const server = http.createServer(app);
-const allowedOrigins = ["http://localhost:8000", "http://example.com", "https://pipes-deep-childrens-tire.trycloudflare.com"];
+
+const sslOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/privkey1.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/cert1.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/chain1.pem')  // If needed
+};
+
+//const server = http.createServer(app);
+const server = https.createServer(sslOptions, app);
+
+
+const allowedOrigins = [
+"http://localhost:8000", "http://example.com", "https://pipes-deep-childrens-tire.trycloudflare.com", "https://api.headvstail.com", "https://auth.headvstail.com", "https://headvstail.com", "https://sock1.headvstail.com"];
 
 const io = socketIo(server, {
     cors: {
@@ -118,7 +131,7 @@ const { Kafka } = require('kafkajs');
 // KafkaJS setup
 const kafka = new Kafka({
     clientId: 'game-server',
-    brokers: ['192.168.1.13:9092']  // Replace with your Kafka broker
+    brokers: ['172.31.11.175:9092']  // Replace with your Kafka broker
 });
 
 const producer = kafka.producer();

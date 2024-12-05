@@ -442,11 +442,11 @@ function myfunc_11() {
     }
 }
 
-
 function triggerCellClick (data){
     Swal.close()
-    console.log(CURRENT_USER, data, flag)
+    console.log("<<<", CURRENT_USER, data, flag, ">>>>")
     if (CURRENT_USER.user_id == data.user_id){
+        MY_TURN = 0;
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -462,7 +462,7 @@ function triggerCellClick (data){
             icon: "success",
             title: "Opponent turn"
         });
-        if (!(flag == CURRENT_USER.player)){
+        if (true){
             const cellnum = parseInt(data.cell.slice(1))
             const func = `myfunc_${cellnum + 2}`
             window[func]()
@@ -470,6 +470,7 @@ function triggerCellClick (data){
             return false;
         }
     } else {
+        MY_TURN = 1;
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -485,7 +486,7 @@ function triggerCellClick (data){
             icon: "success",
             title: "Your turn"
         });
-        if ((flag == CURRENT_USER.player)){
+        if (true){
             const cellnum = parseInt(data.cell.slice(1))
             const func = `myfunc_${cellnum + 2}`
             window[func]()
@@ -512,6 +513,7 @@ function triggerCellClick (data){
 
 }
 
+
 function setPlayer(num){
     flag = 1
     console.log("set a player ", num)
@@ -523,6 +525,20 @@ function setWinner(num){
             title: "Good job!",
             text: "You win!",
             icon: "success"
+          });
+    }
+    else if (num == 2){
+        Swal.fire({
+            title: "Good job!",
+            text: "Match Tie!",
+            icon: "warning"
+          });
+    }
+    else {
+        Swal.fire({
+            title: "oh No!",
+            text: "You Failed!",
+            icon: "error"
           });
     }
 

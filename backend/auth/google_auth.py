@@ -4,7 +4,7 @@ import urllib.parse
 
 GOOGLE_CLIENT_ID = '108451919672.apps.googleusercontent.com'
 GOOGLE_CLIENT_SECRET = '80NVc0Zt80SwPwkujE6gi1Np'
-GOOGLE_REDIRECT_URL = 'http://localhost:8000/gauth/'
+GOOGLE_REDIRECT_URL = 'https://headvstail.com/gauth/'
 # GOOGLE_REDIRECT_URL = 'https://pipes-deep-childrens-tire.trycloudflare.com/gauth/'
 GOOGLE_SCOPE = 'profile email'
 GOOGLE_GRANT_TYPE = 'authorization_code'

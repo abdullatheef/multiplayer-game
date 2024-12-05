@@ -18,11 +18,17 @@ DATABASE_CONFIG = {
 }
 
 JWT_SECRET = 'your_jwt_secret'
-GAME_SERVICE_URL = 'http://localhost:8005'
+GAME_SERVICE_URL = 'https://api.headvstail.com'
 connection_pool = psycopg2.pool.SimpleConnectionPool(1, 10, **DATABASE_CONFIG)
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[
+    "https://headvstail.com",
+    "https://api.headvstail.com",
+    "https://myauth.headvstail.com",
+    "https://sock1.headvstail.com",
+    "https://sock2.headvstail.com"
+], supports_credentials=True)
 
 def is_valid_email(email):
     email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
@@ -65,7 +71,9 @@ def manage_users(conn, email, name):
             'name': name,
             'exp': datetime.datetime.now() + datetime.timedelta(days=365)  # Token expires in 1 year
         }, JWT_SECRET, algorithm='HS256')
+      
         resp = requests.post(f'{GAME_SERVICE_URL}/main/create_user/', headers={'X-Session-Key': token})
+        print(resp, f'{GAME_SERVICE_URL}/main/create_user/', token)
         auth_user_id = resp.json()['id']
         token = jwt.encode({
             'user_id': auth_user_id,
@@ -80,6 +88,8 @@ def manage_users(conn, email, name):
         return response, 200
 
     except Exception as e:
+        import traceback
+        print(traceback.format_exc())
         return jsonify({'error': str(e)}), 500
 
 @app.route('/gauth', methods=['POST', 'GET'])
@@ -134,4 +144,4 @@ def me(conn, user_id, auth_user_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5555)
+    app.run(debug=True, port=5555, host='0.0.0.0')

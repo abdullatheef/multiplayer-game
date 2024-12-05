@@ -196,7 +196,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                         <div class = "ui">
                             <div class="row">
                                 <input type="text" id= "b1" 
-                                       class="cell"  
+                                       class="cell" 
                                        readonly>
                                 <input type="text" id= "b2" 
                                        class="cell"  
@@ -298,7 +298,7 @@ https://templatemo.com/tm-579-cyborg-gaming
     //     },
     //     withCredentials: true // if needed
     // });
-    const socket = io('http://localhost:3003', {
+    const socket = io('https://headvstail.com:3003', {
         query: {
             matchId: id,
         },
@@ -413,9 +413,50 @@ https://templatemo.com/tm-579-cyborg-gaming
     socket.on('tic-tac-toe', async (data) => {
         triggerCellClick(data)    
     });
-    $('.cell').on('click', function () {
+    socket.on('matchDisconnect', async (data) => {
+        console.log(data)
+
+  Swal.fire({
+    title: "Oops..",
+    html: "Other user disconnected. Please come back again..",
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      // const timer = Swal.getPopup().querySelector("b");
+      // timerInterval = setInterval(() => {
+      //   timer.textContent = `${Swal.getTimerLeft()}`;
+      // }, 100);
+    },
+  }).then((result) => {
+window.location.href = "/";
+  });
+
+
+
+    });
+   $('.cell').on('click', function () {
+        if (MY_TURN == 0){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            //timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "warning",
+            title: "Opponent turn"
+        });
+
+	return false;            
+        }
         const cell = $(this).attr('id')
-        console.log(cell);
+        console.log(cell, MY_TURN, 'MY_TURN');
         socket.emit('tic-tac-toe', {action: 'cellClick', cell: cell});
     });
 
@@ -477,7 +518,7 @@ https://templatemo.com/tm-579-cyborg-gaming
             remoteVideo.style.display = "none";
         }
     }
-
+var MY_TURN;
 $(document).ready(function() {
     // Extract the 'id' parameter from the URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -499,10 +540,12 @@ $(document).ready(function() {
                   .find('a')
                   .attr('data-user-id', response.players[1][0]) // Set the data-user-id attribute to the player ID
                   .html(`Player 2 - <b>${response.players[1][1]}</b>`); // Update the player's name
-                
+                console.log(CURRENT_USER, "CURRENT_USER")                
                 if (parseInt(response.players[0][0]) == CURRENT_USER.user_id){
                     if (CURRENT_USER.user_id > response.players[1][0]){
                         CURRENT_USER.player = 0
+                        MY_TURN = 1;
+//                        localStorage.setItem('CURRENT_USER', JSON.stringify(CURRENT_USER));
                         setPlayer(1)
                         const Toast = Swal.mixin({
                             toast: true,
@@ -521,6 +564,8 @@ $(document).ready(function() {
                         });
                     } else {
                         CURRENT_USER.player = 1
+                        MY_TURN = 0;
+  //                      localStorage.setItem('CURRENT_USER', JSON.stringify(CURRENT_USER));
                         setPlayer(0)
                         const Toast = Swal.mixin({
                             toast: true,
@@ -542,6 +587,7 @@ $(document).ready(function() {
                 if (parseInt(response.players[1][0]) == CURRENT_USER.user_id){
                     if (CURRENT_USER.user_id > response.players[0][0]){
                         CURRENT_USER.player = 0
+                        MY_TURN = 1
                         setPlayer(1)
                         const Toast = Swal.mixin({
                             toast: true,
@@ -560,6 +606,7 @@ $(document).ready(function() {
                         });
                     } else {
                         CURRENT_USER.player = 1
+                        MY_TURN = 0
                         setPlayer(0)
                         const Toast = Swal.mixin({
                             toast: true,
@@ -851,7 +898,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 48px;
     text-align: center;
     cursor: pointer;
 }  
@@ -864,7 +911,8 @@ p {
     border-right: 1px solid gray;
 }
 .cell:disabled{
-    color:#fff;
+    color:#e75e8d;
+    background:#e3e3e3;
 }
 
 #b2 {

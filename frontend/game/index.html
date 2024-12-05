@@ -257,12 +257,12 @@ $(document).ready(function() {
         success: function(data) {
             console.log(data)
             $('#current_users').html(
-              `              <div class="col-lg-3">
+              `              <div class="col-lg-6">
                 <div class="heading-section">
-                  <h4><em>Online</em> Now</h4>
+                  <h4><em>Online</em> Now <span style="font-size: small; color: cadetblue;">(${data.users.length} people)</span></h4>
                 </div>
               </div>
-              <div class="col-lg-9">
+              <div class="col-lg-6">
               <div class="main-border-button">
                 <a href="#" id="randomConnect">Random Connect</a>
               </div>
@@ -323,7 +323,7 @@ document.getElementById('connect').addEventListener('click', (e) => {
     //     withCredentials: true // Enable sending cookies with the request
     // });
 
-    socket = io('http://localhost:3000', {
+    socket = io('https://headvstail.com:3000', {
         withCredentials: true // Enable sending cookies with the request
     });
 

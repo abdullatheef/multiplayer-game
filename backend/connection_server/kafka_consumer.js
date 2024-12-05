@@ -29,12 +29,12 @@ connectDb();
 // KafkaJS setup
 const kafka = new Kafka({
     clientId: 'game-consumer',
-    brokers: ['192.168.1.13:9092']  // Replace with your Kafka broker
+    brokers: ['172.31.11.175:9092']  // Replace with your Kafka broker
 });
 
 const kafka2 = new Kafka({
     clientId: 'game-consumer2',
-    brokers: ['192.168.1.13:9092']  // Replace with your Kafka broker
+    brokers: ['172.31.11.175:9092']  // Replace with your Kafka broker
 });
 
 const consumer = kafka.consumer({ groupId: 'game-group' });

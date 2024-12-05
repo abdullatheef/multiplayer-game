@@ -148,7 +148,7 @@ def create_match(request):
         'event': 'redirect',
         'targetUserId': target_user_id,
         'token': token,
-        'url': 'http://localhost:8000/%s/?id=%s' % (game.slug, uuid)
+        'url': 'https://headvstail.com/%s/?id=%s' % (game.slug, uuid)
     }
     
     # Publish the message to a Redis channel (e.g., 'game_updates')

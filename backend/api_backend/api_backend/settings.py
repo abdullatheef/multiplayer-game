@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-s)q^@=61261es*ycp+x#l*%o6_cd3qsnhj2$r9n#(h03m1tgpg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["headvstail.com",
+"api.headvstail.com",
+"myauth.headvstail.com",
+"sock1.headvstail.com",
+"sock2.headvstail.com"]
 
 
 # Application definition
@@ -162,7 +166,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5555",
     "http://127.0.0.1:8005",
     "http://127.0.0.1:8000",
-    "http://127.0.0.1:5555"
+    "http://127.0.0.1:5555",
+"https://headvstail.com",
+"https://api.headvstail.com",
+"https://myauth.headvstail.com",
+"https://sock1.headvstail.com",
+"https://sock2.headvstail.com"
 ]
 CORS_ALLOW_HEADERS = (
     "accept",
@@ -175,3 +184,10 @@ CORS_ALLOW_HEADERS = (
 )
 CORS_ALLOW_CREDENTIALS = True
 REDIS_HOST = 'localhost'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://api.headvstail.com',
+    'https://auth.headvstail.com',
+    'https://headvstail.com',
+]
+

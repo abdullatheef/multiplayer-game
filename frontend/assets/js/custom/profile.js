@@ -14,6 +14,9 @@ function getCookie(name) {
     return null;
 }
 var CURRENT_USER
+if (localStorage.getItem('CURRENT_USER')) {
+    CURRENT_USER = JSON.parse(localStorage.getItem('CURRENT_USER'));
+}
 $(document).ready(function() {
     $.ajaxSetup({
         headers: {
@@ -28,6 +31,8 @@ $(document).ready(function() {
             success: function(response) {
                 console.log('User data retrieved:', response);
                 CURRENT_USER = response
+                localStorage.setItem('CURRENT_USER', JSON.stringify(CURRENT_USER));
+
                 // Display the user information on the page
                 $('.login-success').show()
                 $('.login-failed').hide()
@@ -37,6 +42,7 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 console.error('Error retrieving user info:', error);
+                localStorage.setItem('CURRENT_USER', null);
                 if (window.location.pathname == "/"){
                     $('.login-success').hide()
                     $('.login-failed').show()

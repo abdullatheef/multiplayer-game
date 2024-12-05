@@ -1,8 +1,20 @@
 const express = require('express');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');  // Required for reading SSL certificates
 const { Server } = require('socket.io');
 const app = express();
-const server = http.createServer(app);
+const sslOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/privkey1.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/cert1.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/archive/headvstail.com/chain1.pem')  // If needed
+};
+
+
+//const server = http.createServer(app);
+const server = https.createServer(sslOptions, app);
+
+
 const jwt = require('jsonwebtoken'); // JWT library
 
 const redis = require('redis'); // Redis client
@@ -62,6 +74,12 @@ redisSubscriber.subscribe(channelName, (message) => {
             action: message.event
         });
       }
+      if (message.event == 'matchDisconnect'){
+        io.to(`MATCH_${message.matchId}`).emit('matchDisconnect', {
+            user_id: decoded.user_id,
+            action: message.event
+        });
+      }
   });
 });
 
@@ -77,9 +95,8 @@ process.on('SIGINT', () => {
 
 
 
-
-const allowedOrigins = ["http://localhost:8000", "http://example.com", "https://pipes-deep-childrens-tire.trycloudflare.com"];
-
+//const allowedOrigins = ["http://localhost:8000", "http://example.com", "https://pipes-deep-childrens-tire.trycloudflare.com"];
+const allowedOrigins = ["http://localhost:8000", "http://example.com", "https://pipes-deep-childrens-tire.trycloudflare.com", "https://api.headvstail.com", "https://auth.headvstail.com", "https://headvstail.com", "https://sock1.headvstail.com"];
 const io = new Server(server, {
   cors: {
     origin: allowedOrigins, // Allow these multiple origins
@@ -166,7 +183,19 @@ io.use(authenticateSocket).on('connection', (socket, next) => {
   });
 
   socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
+    console.log('User disconnected:', socket.id, socket.matchId);
+    const message = {
+      token: socket.sessionKey,
+      matchId: socket.matchId,
+      event: 'matchDisconnect'
+    }
+    redisPublisher.publish(channelName, JSON.stringify(message), (err) => {
+        if (err) {
+            console.error('Error publishing to Redis:', err);
+        } else {
+            console.log(`Published message to Redis channel: game_updates`, message);
+        }
+    });
   });
 
 
@@ -206,7 +235,7 @@ const { Kafka } = require('kafkajs');
 // KafkaJS setup
 const kafka = new Kafka({
     clientId: 'game-server',
-    brokers: ['192.168.1.13:9092']  // Replace with your Kafka broker
+    brokers: ['172.31.11.175:9092']  // Replace with your Kafka broker
 });
 
 const producer = kafka.producer();

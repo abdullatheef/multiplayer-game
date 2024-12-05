@@ -1,0 +1,387 @@
+    1  cd frontend/
+    2  python3 -m http.server
+    3  ls
+    4  sudo apt-get update
+    5  git
+    6  git clone https://github.com/abdullatheef/multiplayer-game
+    7  cd multiplayer-game/
+    8  ls
+    9  python
+   10  python3
+   11  tmux
+   12  tmux a -it 1
+   13  tmux a -t 1
+   14  python3 -m venv venv
+   15  sudo apt install python3.12-venv
+   16  python3 -m venv venv
+   17  source venv/bin/activate
+   18  ls
+   19  cd backend/
+   20  ls
+   21  pip install api_backend/requirements.txt 
+   22  pip install -r api_backend/requirements.txt 
+   23  tmux a -t 1
+   24  docker
+   25  # Add Docker's official GPG key:
+   26  sudo apt-get update
+   27  sudo apt-get install ca-certificates curl
+   28  sudo install -m 0755 -d /etc/apt/keyrings
+   29  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+   30  sudo chmod a+r /etc/apt/keyrings/docker.asc
+   31  # Add the repository to Apt sources:
+   32  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+   33    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   34  sudo apt-get update
+   35  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   36  tmux
+   37  tmux ls
+   38  tmux
+   39  ifconfig
+   40  ifconfigsudo apt install net-tools
+   41  sudo apt install net-tools
+   42  ifconfigsudo apt install net-tools
+   43  ifconfig
+   44  ifconfig | grep 192
+   45  tmux ls
+   46  tmux a -t 4
+   47  tmux
+   48  tmux ls
+   49  tmux a -t 0
+   50  tmux a -t 1
+   51  psql
+   52  sudo apt-get install -y postgresql-client
+   53  psql 
+   54  tmux a -t 2
+   55  psql -h 127.0.0.1
+   56  psql -h 127.0.0.1 -U abc
+   57  psql -h 127.0.0.1 -U abc -d postgres
+   58  tmux a -t 1
+   59  psql -h 127.0.0.1 -U abc -d postgres
+   60  ls
+   61  tmux
+   62  cd ..
+   63  tmux
+   64  sudo apt-get install nginx
+   65  curl ifconfig.io
+   66  git diff
+   67  sudo mkdir /etc/nginx/ssl
+   68  sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/selfsigned.key -out /etc/nginx/ssl/selfsigned.crt
+   69  sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+   70  sudo nano /etc/nginx/sites-enabled/default 
+   71  sudo nano /etc/nginx/nginx.conf 
+   72  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+   73  sudo nginx -t
+   74  sudo systemctl reload nginx
+   75  sudo service nginx restart 
+   76  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+   77  ls
+   78  cd frontend/
+   79  ls
+   80  cd ..
+   81  cd frontend/
+   82  pwd
+   83  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+   84  sudo nginx -t
+   85  sudo systemctl reload nginx
+   86  tail -f /var/log/nginx/error.log 
+   87  sudo chown -R www-data:www-data /home/ubuntu/multiplayer-game/frontend
+   88  tail -f /var/log/nginx/error.log 
+   89  sudo chmod 755 /home/ubuntu/multiplayer-game/frontend
+   90  sudo chmod 644 /home/ubuntu/multiplayer-game/frontend/index.html
+   91  sudo systemctl reload nginx
+   92  tail -f /var/log/nginx/error.log 
+   93  ls -ld /home/ubuntu/multiplayer-game/frontend
+   94  ls -ld /home/ubuntu/multiplayer-game/frontend/index.html 
+   95  cat /etc/nginx/sites-enabled/headvstail.conf 
+   96  sudo chmod o+x /home
+   97  sudo chmod o+x /home/ubuntu
+   98  sudo nginx -t
+   99  sudo systemctl restart nginx
+  100  tail -f /var/log/nginx/error.log 
+  101  tmux ls
+  102  tmux a -t 0
+  103  tmux ls
+  104  nano index.html 
+  105  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  106  tmux a -t 0
+  107  tmux a -t 1
+  108  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  109  tmux a -t 2
+  110  tmux a -t 3
+  111  tmux a -t 4
+  112  tmux a -t 5
+  113  tmux a -t 6
+  114  tmux a -t 7
+  115  tmux a -t 8
+  116  tmux a -t 9
+  117  tmux a -t 10
+  118  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  119  sudo nginx -t
+  120  sudo systemctl reload nginx
+  121  nano index.html 
+  122  nano assets/js/custom/index.js 
+  123  sudo nano assets/js/custom/index.js 
+  124  cd ..
+  125  cd backend/auth/
+  126  ls
+  127  nano main.py 
+  128  tmux a -t 1
+  129  sudo nano assets/js/custom/index.js 
+  130  cd ..
+  131  cd frontend/
+  132  sudo nano assets/js/custom/index.js 
+  133  tail -f /var/log/nginx/error.log 
+  134  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  135  sudo nginx -t
+  136  sudo systemctl reload nginx
+  137  sudo nano assets/js/custom/index.js 
+  138  sudo systemctl reload nginx
+  139  tmux a -t 1
+  140  sudo apt-get update
+  141  sudo apt-get install certbot python3-certbot-nginx
+  142  sudo certbot --nginx -d headvstail.com -d api.headvstail.com -d auth.headvstail.com -d sock1.headvstail.com -d sock2.headvstail.com
+  143  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  144  sudo nginx -t
+  145  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  146  sudo systemctl reload nginx
+  147  cd ..
+  148  cd backend/
+  149  ls
+  150  cd api_backend/
+  151  ls
+  152  nano api_backend/settings.py 
+  153  cd multiplayer-game/backend/
+  154  nano api_backend/api_backend/settings.py 
+  155  nano auth/google_auth.py 
+  156  nano auth/main.py 
+  157  tmux a -t 1
+  158  nano auth/main.py 
+  159  tmux a -t 1
+  160  nano auth/main.py 
+  161  tmux a -t 1
+  162  nano auth/main.py 
+  163  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  164  sudo service nginx restart 
+  165  nano auth/main.py 
+  166  tmux a -t 1
+  167  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  168  tmux a -t 1
+  169  tail -f /var/log/nginx/access.log 
+  170  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  171  sudo service nginx restart 
+  172  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  173  sudo service nginx restart 
+  174  tail -f /var/log/nginx/access.log 
+  175  tmux a -t 1
+  176  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  177  cat /etc/nginx/sites-enabled/headvstail.conf 
+  178  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  179  sudo service nginx restart 
+  180  cat /etc/nginx/sites-enabled/headvstail.conf 
+  181  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  182  sudo service nginx restart 
+  183  sudo systemctl restart nginx
+  184  sudo ufw allow 5555
+  185  curl -H "Origin: https://headvstail.com" -I https://auth.headvstail.com/me
+  186  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  187  tmux a -t 1
+  188  curl -I http://127.0.0.1:5555
+  189  tmux a -t 1
+  190  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  191  sudo nginx -t
+  192  sudo service nginx reload 
+  193  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  194  sudo service nginx reload 
+  195  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  196  cat /etc/nginx/sites-enabled/headvstail.conf 
+  197  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  198  sudo service nginx reload 
+  199  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  200  sudo nginx -t
+  201  sudo service nginx reload 
+  202  cd ..
+  203  cd frontend/
+  204  nano assets/js/custom/index.js 
+  205  sudo nano assets/js/custom/index.js 
+  206  cd ..
+  207  tmux a -t 1
+  208  tmux a -t 9
+  209  tmux a -t 7
+  210  tmux a -t 8
+  211  tmux a -t 6
+  212  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  213  tmux a -t 6
+  214  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  215  sudo service nginx reload 
+  216  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  217  sudo service nginx reload 
+  218  cd backend/auth/
+  219  nano google_auth.py 
+  220  tmux a -t 1
+  221  curl 
+  222  curl  http://localhost:555/me
+  223  curl  http://localhost:5555/me
+  224  tmux a -t 1
+  225  tmux a -t 9
+  226  tmux a -t 7
+  227  fg
+  228  tmux a -t 1
+  229  history 
+  230  sudo certbot --nginx -d headvstail.com -d api.headvstail.com -d auth.headvstail.com -d sock1.headvstail.com -d sock2.headvstail.com -d myauth..headvstail.com
+  231  sudo certbot --nginx -d headvstail.com -d api.headvstail.com -d auth.headvstail.com -d sock1.headvstail.com -d sock2.headvstail.com -d myauth.headvstail.com
+  232  sudo systemctl reload nginx
+  233  tmux a -t 1
+  234  tmux a -t 6
+  235  tmux a -t 7
+  236  tmux a -t 8
+  237  tmux a -t 9
+  238  nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  239  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  240  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  241  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  242  sudo nano multiplayer-game/frontend/game/index.html 
+  243  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  244  sudo systemctl restart nginx
+  245  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  246  sudo systemctl restart nginx
+  247  sudo nginx -t
+  248  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  249  sudo systemctl restart nginx
+  250  sudo nano multiplayer-game/frontend/game/index.html 
+  251  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  252  sudo systemctl restart nginx
+  253  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  254  sudo systemctl restart nginx
+  255  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  256  sudo nginx -t
+  257  sudo systemctl restart nginx
+  258  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  259  curl -I https://sock1.headvstail.com
+  260  curl -I https://sock1.headvstail.com/socke
+  261  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  262  sudo nginx -t && sudo systemctl reload nginx
+  263  tail -f /var/log/nginx/error.log 
+  264  tail -f /var/log/nginx/access.log
+  265  sudo nano /etc/nginx/sites-enabled/headvstail.conf
+  266  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  267  sudo rm /etc/nginx/sites-enabled/default 
+  268  sudo service nginx reload 
+  269  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  270  sudo service nginx reload 
+  271  curl 'https://sock1.headvstail.com/socket.io/?EIO=4&transport=polling&t=PEHBjQw&sid=M9KPsG6evScZb18TAAAA'   -H 'Accept: */*'   -H 'Accept-Language: en-US,en;q=0.9'   -H 'Cache-Control: no-cache'   -H 'Connection: keep-alive'   -H 'DNT: 1'   -H 'Origin: https://headvstail.com'   -H 'Pragma: no-cache'   -H 'Referer: https://headvstail.com/'   -H 'Sec-Fetch-Dest: empty'   -H 'Sec-Fetch-Mode: cors'   -H 'Sec-Fetch-Site: same-site'   -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'   -H 'sec-ch-ua: "Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"'   -H 'sec-ch-ua-mobile: ?0'   -H 'sec-ch-ua-platform: "macOS"'
+  272  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  273  sudo service nginx reload 
+  274  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  275  sudo nano multiplayer-game/frontend/game/index.html 
+  276  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  277  sudo service nginx reload 
+  278  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  279  sudo service nginx reload 
+  280  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  281  sudo service nginx reload 
+  282  sudo nginx -t
+  283  sudo service nginx reload 
+  284  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  285  sudo service nginx reload 
+  286  sudo nano multiplayer-game/frontend/game/index.html 
+  287  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  288  sudo service nginx reload 
+  289  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  290  cat multiplayer-game/backend/connection_server/server.js 
+  291  sudo nano /etc/nginx/sites-enabled/headvstail.conf 
+  292  sudo ls /etc/letsencrypt/live/headvstail.com/
+  293  cat multiplayer-game/backend/connection_server/server.js 
+  294  nano  multiplayer-game/backend/connection_server/server.js 
+  295  pwd
+  296  sudo ls /etc/letsencrypt/live/headvstail.com/
+  297  nano  multiplayer-game/backend/connection_server/server.js 
+  298  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  299  tmux a -t 6
+  300  tmux a -t 7
+  301  sudo service nginx reload 
+  302  tmux a -t 7
+  303  cat multiplayer-game/backend/connection_server/package.json 
+  304  tmux a -t 7
+  305  sudo nano multiplayer-game/frontend/game/index.html 
+  306  tmux a -t 7
+  307  tmux a -t 8
+  308  tmux a -t 9
+  309  tmux a -t 6
+  310  tmux a -t 7
+  311  tmux a -t 9
+  312  ls
+  313  sudo nano multiplayer-game/frontend/game/index.html 
+  314  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  315  free -m
+  316  tmux a -t 9
+  317  tmux a -t 8
+  318  tmux a -t 7
+  319  tmux a -t 9
+  320  tmux a -t 8
+  321  tmux a -t 9
+  322  tmux a -t 8
+  323  tmux a -t 7
+  324  tmux a -t 6
+  325  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  326  tmux a -t 6
+  327  tmux a -t 7
+  328  tmux a -t 8
+  329  tmux a -t 9
+  330  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  331  sudo nano multiplayer-game/frontend/game/index.html 
+  332  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  333  sudo nano multiplayer-game/frontend/game/index.html 
+  334  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  335  tmux a -t 9
+  336  tmux a -t 8
+  337  tmux a -t 7
+  338  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  339  sudo nano multiplayer-game/frontend/assets/js/custom/index.js
+  340  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  341  sudo nano multiplayer-game/frontend/assets/js
+  342  sudo nano multiplayer-game/frontend/profile/index.html 
+  343  tmux a -t 7
+  344  tmux a -t 6
+  345  tmux a -t 9
+  346  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  347  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  348  sudo nano multiplayer-game/frontend/assets/js/custom/index.js
+  349  sudo nano multiplayer-game/frontend/assets/js/custom/profile.js 
+  350  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  351  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  352  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  353  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  354  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  355  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  356  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  357  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  358  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  359  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  360  sudo nano multiplayer-game/frontend/assets/js/custom/profile.js 
+  361  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  362  sudo nano multiplayer-game/frontend/assets/js/custom/profile.js 
+  363  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  364  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  365  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  366  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  367  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  368  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  369  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  370  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  371  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  372  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  373  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  374  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  375  sudo nano multiplayer-game/frontend/assets/c
+  376  sudo nano multiplayer-game/frontend/tic-tac-toe/index.html 
+  377  sudo nano multiplayer-game/frontend/tic-tac-toe/tic.js 
+  378  cd multiplayer-game/
+  379  git diff
+  380  git branch
+  381  git checkout -b main_prod
+  382  git diff
+  383  git add .
+  384  git statsu
+  385  git status
+  386  git add -u .
+  387  history > history.txt
